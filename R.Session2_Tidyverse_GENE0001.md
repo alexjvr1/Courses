@@ -99,64 +99,60 @@ Do the column names match?
 
 How would we combine the data? 
 
+
+Answer: 
+
 dplyr has several functions that can help us combine datasets by row, by column, by intersecting datasets, and much more. 
 
 See here for the cheatsheet: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
-
 
 ```
 lep <- bind_rows(pop1, pop2, pop3)
 
 summary(lep)
+
+head(lep)
 ```
-
-
 
 
 
 Question: 
 
-The data is not in tidy format. Can you name two things we need to change? 
-
-
+The data is not in tidy format. Can you name one thing we need to change? 
 
 
 
 #### 2. Tidy the data
 
 
-##### Issue 1: Multiple variables are stored in a single column. 
+##### Issue: Multiple variables are stored in a single column. 
 
 
 ```
-original_data$NAME[1:3]
+lep$ChrRegion[1:3]
 
-## [1] "SFB2       || ER to Golgi transport || molecular function unknown || YNL049C || 1082129"          
-## [2] "|| biological process unknown || molecular function unknown || YNL095C || 1086222"                
-## [3] "QRI7       || proteolysis and peptidolysis || metalloendopeptidase activity || YDL104C || 1085955"
-
-```
-
-
-The details of each of these fields isn’t annotated in the paper, but we can figure out most of it. It contains:
-
-- Gene name e.g. SFB2. Note that not all genes have a name.
-
-- Biological process e.g. “proteolysis and peptidolysis”
-
-- Molecular function e.g. “metalloendopeptidase activity”
-
-- Systematic ID e.g. YNL049C. Unlike a gene name, every gene in this dataset has a systematic ID.3
-
-- Another ID number e.g. 1082129. I don’t know what this number means, and it’s not annotated in the paper. Oh, well.
-
-
-Having all give of these in the same column is very inconvenient. For example, if I have another dataset with information about each gene, I can’t merge the two. Luckily, the tidyr package provides the separate function for exactly this case.
-
+[1] LR761647.1_0_1000000       LR761647.1_1000000_2000000
+[3] LR761647.1_2000000_3000000
+56 Levels: LR761647.1_0_1000000 ... LR761649.1_9000000_10000000
 
 ```
-cleaned_data <- original_data %>%
-  separate(NAME, c("name", "BP", "MF", "systematic_name", "number"), sep = "\\|\\|")
+
+
+This column contains three sets of data: 
+
+- Chromosome name. eg. LR761647.1
+
+- Start of window
+
+- End of window
+
+(Remember that diversity and nucleotide frequencies are estimated in 1Mb windows) 
+
+Tidy format dictates that each column should contain a single variable, and each row a single observation. So we should split these: 
+
+```
+lep_cleaned <- lep %>%
+  separate(ChrRegion, c("Chr", "start", "stop"), sep = "_")
 ```
 
 
@@ -164,30 +160,10 @@ We simply told separate what column we’re splitting, what the new column names
 
 
 ```
-view(cleaned_data)
+head(lep_cleaned)
 
 ```
 
-Just like that, we’ve separated one column into five.
-
-Two more things. First, when we split by ||, we ended up with whitespace at the start and end of some of the columns, which is inconvenient:
-
-```
-head(cleaned_data$BP)
-## [1] " ER to Golgi transport "        " biological process unknown "  
-## [3] " proteolysis and peptidolysis " " mRNA polyadenylylation* "     
-## [5] " vesicle fusion* "              " biological process unknown "
-```
-
-
-We’ll solve that with dplyr’s mutate_each, along with the built-in trimws (“trim whitespace”) function.
-
-
-```
-cleaned_data <- original_data %>%
-  separate(NAME, c("name", "BP", "MF", "systematic_name", "number"), sep = "\\|\\|") %>%
-  mutate_each(funs(trimws), name:systematic_name)
-```
 
 Finally, we don’t even know what the number column represents (if you can figure it out, let me know!) And while we’re at it, we’re not going to use the GID, YORF or GWEIGHT columns in this analysis either. We may as well drop them, which we can do with dplyr’s select.
 
