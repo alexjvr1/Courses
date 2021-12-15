@@ -294,6 +294,9 @@ And tutorials:
 ## Part 2: Data Visualisation
 
 
+
+
+
 ### Objectives: 
 
 - Know the different options needed to generate a plot with ggplot 
@@ -308,19 +311,31 @@ And tutorials:
 
 
 
-#### Extra
+#### Additional information
 
-Exercises to try: 
+Read more: https://ggplot2.tidyverse.org
 
-
-
-Some good tutorials: 
 
 
 
 
 
 ## Extra: 
+
+### More information on dplyr
+
+There are lots of really useful free resources available to learn more about dplyr and other tidyverse packages. Here are a few: 
+
+https://datacarpentry.org/R-genomics/04-dplyr.html
+
+https://seananderson.ca/2014/09/13/dplyr-intro/
+
+
+
+### More information on ggplot
+
+
+
 
 ### Troubleshooting
 
