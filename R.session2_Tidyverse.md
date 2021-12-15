@@ -23,9 +23,7 @@ Useful Cheatsheets: https://www.rstudio.com/resources/cheatsheets/
 
 
 
-## Part 1: Data wrangling
-
-Data never arrive in the condition that you need them in order to do effective data analysis. Data need to be re-shaped, re-arranged, and re-formatted, so that they can be visualized or be inputted into a machine learning algorithm. This module addresses the problem of wrangling your data so that you can bring them under control and analyze them effectively. The key goal in data wrangling is transforming non-tidy data into tidy data.
+## Part 1: Data wrangling: Turning un-tidy data into tidy data
 
 
 ### Objectives:
@@ -43,6 +41,22 @@ Data never arrive in the condition that you need them in order to do effective d
 - How to group data
 
 - How to filter data
+
+
+
+#### 1. Import data and R packages
+
+
+Tidyverse is a suite of R packages for wrangling and visualising data. They all use the same design philosophy, grammer and data structure. 
+
+Today we'll be using *dplyr* and *ggplot2*, but you can find out more about the other packages here: https://www.tidyverse.org/packages/
+
+
+```
+#install.packages("tidyverse")
+library(tidyverse)
+
+```
 
 
 
