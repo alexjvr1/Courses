@@ -169,7 +169,7 @@ head(lep_cleaned)
 These data are now in a tidy format. 
 
 
-Extra: 
+##### *Extra:* 
 
 Our data had a single issue violating tidy data format. In genomic data we quite often find data reported per gene or per genomic location rather than per sample. In this case we need to reformat the data so that each line corresponds to an individual. How do we do that? 
 
