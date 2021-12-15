@@ -52,11 +52,48 @@ Tidyverse is a suite of R packages for wrangling and visualising data. They all 
 Today we'll be using *dplyr* and *ggplot2*, but you can find out more about the other packages here: https://www.tidyverse.org/packages/
 
 
+
+
 ```
 #install.packages("tidyverse")
 library(tidyverse)
 
 ```
+
+
+###### Background: gene expression in starvation
+
+(Information from here: http://varianceexplained.org/r/tidy-genomics/)
+
+Through the process of gene regulation, a cell can control which genes are transcribed from DNA to RNA- what we call being “expressed”. (If a gene is never turned into RNA, it may as well not be there at all). This provides a sort of “cellular switchboard” that can activate some systems and deactivate others, which can speed up or slow down growth, switch what nutrients are transported into or out of the cell, and respond to other stimuli. A gene expression microarray lets us measure how much of each gene is expressed in a particular condition. We can use this to figure out the function of a specific gene (based on when it turns on and off), or to get an overall picture of the cell’s activity.
+
+Brauer 2008 used microarrays to test the effect of starvation and growth rate on baker’s yeast (*S. cerevisiae*, a popular model organism for studying molecular genomics because of its simplicity). Basically, if you give yeast plenty of nutrients (a rich media), except that you sharply restrict its supply of one nutrient, you can control the growth rate to whatever level you desire (we do this with a tool called a chemostat). For example, you could limit the yeast’s supply of glucose (sugar, which the cell metabolizes to get energy and carbon), of leucine (an essential amino acid), or of ammonium (a source of nitrogen).
+
+"Starving" the yeast of these nutrients lets us find genes that:
+
+- Raise or lower their activity in response to growth rate. 
+
+- Growth-rate dependent expression patterns can tell us a lot about cell cycle control, and how the cell responds to stress.
+
+- Respond differently when different nutrients are being limited. These genes may be involved in the transport or metabolism of those nutrients.
+
+
+We'll import the data submitted by the authors, and see what we need to do to get the data in a tidy format. 
+```
+#import data
+original_data <- read_delim("http://varianceexplained.org/files/Brauer2008_DataSet1.tds", delim = "\t")
+
+#What do the data look like? 
+dim(original_data)
+
+head(original_data)
+
+summary(original_data)
+
+colnames(original_data)
+```
+
+
 
 
 
