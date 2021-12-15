@@ -27,6 +27,15 @@ Data never arrive in the condition that you need them in order to do effective d
 
 
 
+#### Extra
+
+Exercises to try: 
+
+
+
+Some good tutorials: 
+
+
 
 ## Part 2: Reshape Data
 
@@ -47,6 +56,14 @@ Visualising data with ggplot
 
 
 
+#### Extra
+
+Exercises to try: 
+
+
+
+Some good tutorials: 
+
 
 
 
@@ -63,13 +80,35 @@ Visualising data with ggplot
 
 - How to group within a plot in ggplot
 
+- Create a pdf of your figure
 
 
-### Extra reading
+
+#### Extra
+
+Exercises to try: 
 
 
-## Extra: Troubleshooting
 
+Some good tutorials: 
+
+
+
+
+
+## Extra: 
+
+### Troubleshooting
+
+
+Some common syntax errors in R
+
+
+How and where to find help with errors
+
+
+
+### 
 
 
 
