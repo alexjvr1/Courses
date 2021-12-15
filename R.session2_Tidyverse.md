@@ -1,5 +1,17 @@
 # R Session 2 - Data wrangling and visualisation
 
+Data will never be collected or arrive in exactly the right format to be analysed or visualised. The goal is to get data into a Tidy format so that they can be easily used as input for analyses or plots. 
+
+What is Tidy data?  
+
+1. Every column is a variable.
+
+2. Every row is an observation.
+
+3. Every cell is a single value.
+
+Read more about tidy data: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
+
 
 ### Notes
 
