@@ -15,12 +15,7 @@ Read more about tidy data: https://cran.r-project.org/web/packages/tidyr/vignett
 
 ### Notes
 
-This course is inspired by posts by David Robinson: http://varianceexplained.org/r/tidy-genomics/ 
-
-and the DataCamp Introduction to TidyVerse course: https://campus.datacamp.com/courses/introduction-to-the-tidyverse
-
-Useful Cheatsheets: https://www.rstudio.com/resources/cheatsheets/
-
+This course is inspired by several very useful and highly recommended blog posts and courses. Find the links in the "Extra" section below. 
 
 
 ## Part 1: Data wrangling: Turning un-tidy data into tidy data
@@ -278,14 +273,6 @@ The column names are not very informative at the moment. To change one column na
 
 
 
-#### Extra
-
-Some useful links: 
-
-
-
-And tutorials: 
-
 
 
 
@@ -322,26 +309,35 @@ Read more: https://ggplot2.tidyverse.org
 
 ## Extra: 
 
-### More information on dplyr
+### More information on dplyr and a bit on tidyverse
 
 There are lots of really useful free resources available to learn more about dplyr and other tidyverse packages. Here are a few: 
 
-https://datacarpentry.org/R-genomics/04-dplyr.html
+Data Carpentry has a whole section on analysing data in R. Here is the dplyr section: https://datacarpentry.org/R-genomics/04-dplyr.html
 
-https://seananderson.ca/2014/09/13/dplyr-intro/
+A very clean and simple intro to dplyr from Sean Anderson: https://seananderson.ca/2014/09/13/dplyr-intro/
 
+David Robinson has a couple of posts on why it is important to start using tidyverse as early as possible when learning R: http://varianceexplained.org/r/tidy-genomics/ 
+
+A free course from DataCamp - Introduction to TidyVerse: https://campus.datacamp.com/courses/introduction-to-the-tidyverse
+
+I can't overstate how useful these R cheatsheets are: https://www.rstudio.com/resources/cheatsheets/
 
 
 ### More information on ggplot
 
+Another great post from Data Carpentry: https://datacarpentry.org/semester-biology/materials/ggplot/
 
+A nicely written example using genomic data: https://genviz.org/module-02-r/0002/03/01/introToggplot2/ 
+
+And a second genomics example: https://ucsdlib.github.io/workshops/ggplot.html
 
 
 ### Troubleshooting
 
 #### Common errors
 
-The most common errors you'll run in to will be either 1) setting your path correctly, or 2) syntax errors in R. 
+The most common errors you'll run in to will be either 1) setting your path correctly and typos  (xx not found/does not exist error), or 2) syntax errors in R. 
 
 Have a look at this post for some common error messages and solutions: https://github.com/noamross/zero-dependency-problems/issues/7
 
