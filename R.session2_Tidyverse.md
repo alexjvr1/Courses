@@ -30,9 +30,9 @@ Useful Cheatsheets: https://www.rstudio.com/resources/cheatsheets/
 
 - Know how to tidy data 
 
-- Know how to change column names
-
 - Know how to add and remove columns from data
+
+- Know how to change column names
 
 - Know how to substitute data or text in columns
 
@@ -225,7 +225,7 @@ cleaned_data <- original_data %>%
   select(-number, -GID, -YORF, -GWEIGHT) %>%
   gather(sample, expression, G0.05:U0.3) %>%
   separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE)
-  
+```  
 
 This time, instead of telling separate to split the strings based on a particular delimiter, we told it to separate it after the first character (that is, after G/P/S/N/L/U). We also told it convert = TRUE to tell it that it should notice the 0.05/0.1/etc value is a number and convert it.
 
