@@ -2,7 +2,7 @@
 
 Data will never be collected or arrive in exactly the right format to be analysed or visualised. The goal is to get data into a Tidy format so that they can be easily used as input for analyses or plots. 
 
-What is Tidy data?  
+What are Tidy data?  
 
 1. Every column is a variable.
 
