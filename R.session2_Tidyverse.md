@@ -1,6 +1,14 @@
 # R Session 2 - Data wrangling and visualisation
 
 
+### Notes
+
+This course draws heavily from posts by David Robinson: http://varianceexplained.org/r/tidy-genomics/
+
+It is well worth your time exploring some f
+
+
+
 
 
 
