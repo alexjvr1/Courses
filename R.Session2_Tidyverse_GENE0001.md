@@ -165,50 +165,6 @@ head(lep_cleaned)
 ```
 
 
-Finally, we don’t even know what the number column represents (if you can figure it out, let me know!) And while we’re at it, we’re not going to use the GID, YORF or GWEIGHT columns in this analysis either. We may as well drop them, which we can do with dplyr’s select.
-
-```
-cleaned_data <- original_data %>%
-  separate(NAME, c("name", "BP", "MF", "systematic_name", "number"), sep = "\\|\\|") %>%
-  mutate_each(funs(trimws), name:systematic_name) %>%
-  select(-number, -GID, -YORF, -GWEIGHT)
-```
-
-
-##### Issue 2: Column headers are values, not variable names
-
-
-
-Let’s take a closer look at all those column headers like G0.05, N0.2 and P.15.
-
-- Limiting nutrient. This has six possible values: glucose (G), ammonium (N), sulfate (S), phosphate (P), uracil (U) or leucine (L).
-
-- Growth rate: A number, ranging from .05 to .3. .05 means slow growth (the yeast were being starved hard of that nutrient) while .3 means fast growth. (Technically, this value measures the dilution rate from the chemostat).
-
-- Expression level. These are the values currently stored in those columns, as measured by the microarray. (Note that the paper already did some pre-processing and normalization on these values, which we’re ignoring here).
-
-
-The rules of tidy data specify that each variable forms one column, and this is not even remotely the case- we have 36 columns when we should have 3. That means our data is trapped in our column names. If you don’t see why this is a problem, consider: how would you put growth rate on the x-axis of a graph? How would you filter to look only the glucose condition?
-
-Luckily, the tidyr package has a solution ready. The documentation for gather notes (emphasis mine):
-
-Gather takes multiple columns and collapses into key-value pairs, duplicating all other columns as needed. You use gather() when you notice that you have columns that are not variables.
-
-Hey, that’s us! So let’s apply gather as our next step:
-
-```
-cleaned_data <- original_data %>%
-  separate(NAME, c("name", "BP", "MF", "systematic_name", "number"), sep = "\\|\\|") %>%
-  mutate_each(funs(trimws), name:systematic_name) %>%
-  select(-number, -GID, -YORF, -GWEIGHT) %>%
-  gather(sample, expression, G0.05:U0.3)
-```
-
-Now when we view it, it looks like:
-
-```
-View(cleaned_data)
-```
 
 Notice that the dataset no longer consists of one-row-per-gene: it’s one-row-per-gene-per-sample. This has previously been called “melting” a dataset, or turning it into “long” format. But I like the term “gather”: it shows that we’re taking these 36 columns and pulling them together.
 
