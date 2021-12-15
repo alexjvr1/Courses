@@ -42,6 +42,9 @@ Useful Cheatsheets: https://www.rstudio.com/resources/cheatsheets/
 
 
 
+
+
+
 #### 1. Import data and R packages
 
 
@@ -94,7 +97,7 @@ colnames(original_data)
 
 Question: 
 
-1) The data is not in tidy format. Can you name two things we need to change? 
+The data is not in tidy format. Can you name two things we need to change? 
 
 
 
@@ -130,6 +133,7 @@ The details of each of these fields isn’t annotated in the paper, but we can f
 
 
 Having all give of these in the same column is very inconvenient. For example, if I have another dataset with information about each gene, I can’t merge the two. Luckily, the tidyr package provides the separate function for exactly this case.
+
 
 ```
 cleaned_data <- original_data %>%
@@ -235,6 +239,10 @@ Take a look at those six lines of code, a mini-sonnet of data cleaning. Doesn’
 
 
 
+
+
+
+
 #### 4. Change column names
 
 Let's look at the column names again: 
@@ -256,7 +264,10 @@ The column names are not very informative at the moment. To change one column na
 
 
 
+
+
 #### 6. Combine datasets with dplyr
+
 
 
 
