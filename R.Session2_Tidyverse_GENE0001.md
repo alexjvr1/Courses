@@ -169,26 +169,13 @@ head(lep_cleaned)
 These data are now in a tidy format. 
 
 
+Extra: 
+
+Our data had a single issue violating tidy data format. In genomic data we quite often find data reported per gene or per genomic location rather than per sample. In this case we need to reformat the data so that each line corresponds to an individual. How do we do that? 
 
 
 
-Notice that the dataset no longer consists of one-row-per-gene: it’s one-row-per-gene-per-sample. This has previously been called “melting” a dataset, or turning it into “long” format. But I like the term “gather”: it shows that we’re taking these 36 columns and pulling them together.
 
-One last problem. That sample column really contains two variables, nutrient and rate. We already learned what to do when we have two variables in one column: use separate:
-
-
-```
-cleaned_data <- original_data %>%
-  separate(NAME, c("name", "BP", "MF", "systematic_name", "number"), sep = "\\|\\|") %>%
-  mutate_each(funs(trimws), name:systematic_name) %>%
-  select(-number, -GID, -YORF, -GWEIGHT) %>%
-  gather(sample, expression, G0.05:U0.3) %>%
-  separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE)
-```  
-
-This time, instead of telling separate to split the strings based on a particular delimiter, we told it to separate it after the first character (that is, after G/P/S/N/L/U). We also told it convert = TRUE to tell it that it should notice the 0.05/0.1/etc value is a number and convert it.
-
-Take a look at those six lines of code, a mini-sonnet of data cleaning. Doesn’t it read less like code and more like instructions? (“First we separated the NAME column into its five parts, and trimmed each. We selected out columns we didn’t need…”) That’s the beauty of the %>% operator and the dplyr/tidyr verbs.
 
 
 
