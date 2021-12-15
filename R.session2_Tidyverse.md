@@ -38,8 +38,6 @@ Useful Cheatsheets: https://www.rstudio.com/resources/cheatsheets/
 
 - How to combine datasets together
 
-- How to group data
-
 - How to filter data
 
 
@@ -233,8 +231,11 @@ Take a look at those six lines of code, a mini-sonnet of data cleaning. Doesn’
 
 
 
+#### 3. Add or remove columns
 
-#### 3. Change column names
+
+
+#### 4. Change column names
 
 Let's look at the column names again: 
 ```
@@ -251,32 +252,16 @@ The column names are not very informative at the moment. To change one column na
 
 
 
-
-
-#### Extra
-
-Exercises to try: 
+#### 5. Substitute text in a column
 
 
 
-Some good tutorials: 
-
-
-
-## Part 2: Reshape Data
-
-### Objectives: 
-
-- Know the difference between "Long" and "Wide" format
-
-- Know how to transform data from Wide to Long
+#### 6. Combine datasets with dplyr
 
 
 
 
-Filtering, merging, grouping, aggregating data - Introduction to common packages such as dplyr and data.table
-
-Visualising data with ggplot
+#### 7. Filter data
 
 
 
@@ -284,16 +269,18 @@ Visualising data with ggplot
 
 #### Extra
 
-Exercises to try: 
+Some useful links: 
 
 
 
-Some good tutorials: 
+And tutorials: 
 
 
 
 
-## Part 3: Visualisation
+
+
+## Part 2: Data Visualisation
 
 
 ### Objectives: 
