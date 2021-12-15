@@ -1,31 +1,13 @@
 # R Session 2 - Data wrangling and visualisation
 
-Data will never be collected or arrive in exactly the right format to be analysed or visualised. The goal is to get data into a Tidy format so that they can be easily used as input for analyses or plots. 
-
-What are Tidy data?  
-
-1. Every column is a variable.
-
-2. Every row is an observation.
-
-3. Every cell is a single value.
-
-Read more about tidy data: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
-
-
-### Notes
-
-This course is inspired by several very useful and highly recommended blog posts and courses. Find the links in the "Extra" section below. 
-
-
-## Part 1: Data wrangling: Turning un-tidy data into tidy data
+Data will never be collected or arrive in exactly the right format to be analysed or visualised. The goal is to get data into a tidy format so that they can be easily used as input for analyses or plots. 
 
 
 ### Objectives:
 
-- Recognise un-tidy data
+- Recognise un-tidy data 
 
-- create tidy data
+- Create tidy data
 
 - Combine data frames
 
@@ -37,10 +19,25 @@ This course is inspired by several very useful and highly recommended blog posts
 
 
 
-### Note: 
+### Notes
 
-These notes should serve as starting point for learning about data wrangling and visualisation. Use the links in the "Extra" section below to learn more, and practice on your own datasets. 
+This lecture should serve as starting point for learning about data wrangling and visualisation. Use the links in the "Extra" section below to learn more, and practice on your own datasets. 
 
+Learn Tidyverse first and "Do powerful things quickly": http://varianceexplained.org/r/teach-tidyverse/
+
+
+## Part 1: Data wrangling: Turning un-tidy data into tidy data
+
+
+What are Tidy data?  
+
+1. Every column is a variable.
+
+2. Every row is an observation.
+
+3. Every cell is a single value.
+
+Read more about tidy data: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
 
 
 
@@ -73,6 +70,8 @@ We'll import the data, and see what we need to do to get the data in a tidy form
 #Usually we'd do this - Read files in to a list: 
 files <- list.files(pattern="GENE0001.txt") 
 myfiles <- lapply(files, read.table, header=T)
+##See more on lists in the "Extra section below"
+
 
 ##But, we want three separate files so that we can learn how to combine them using dplyr: 
 
@@ -82,14 +81,37 @@ pop3 <- read.table("POP3.GENE0001.txt", header=T)
 
 
 #What do the data look like? 
-dim(original_data)
+dim(pop1)
 
-head(original_data)
+head(pop1)
 
-summary(original_data)
+summary(pop1)
 
-colnames(original_data)
+colnames(pop1)
+colnames(pop2)
+colnames(pop3)
 ```
+
+
+Questions: 
+
+Do the column names match?
+
+How would we combine the data? 
+
+dplyr has several functions that can help us combine datasets by row, by column, by intersecting datasets, and much more. 
+
+See here for the cheatsheet: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+
+```
+lep <- bind_rows(pop1, pop2, pop3)
+
+summary(lep)
+```
+
+
+
 
 
 Question: 
@@ -324,6 +346,10 @@ David Robinson has a couple of posts on why it is important to start using tidyv
 A free course from DataCamp - Introduction to TidyVerse: https://campus.datacamp.com/courses/introduction-to-the-tidyverse
 
 I can't overstate how useful these R cheatsheets are: https://www.rstudio.com/resources/cheatsheets/
+
+### More on joining datasets together
+
+https://www.guru99.com/r-dplyr-tutorial.html
 
 
 ### More information on ggplot
