@@ -159,10 +159,16 @@ lep_cleaned <- lep %>%
 We simply told separate what column we’re splitting, what the new column names should be, and what we were separating by. What does the data look like now?
 
 
+The "%>%" is a pipe. This makes the preceding variable the input for the following commands. 
+
 ```
 head(lep_cleaned)
 
 ```
+
+These data are now in a tidy format. 
+
+
 
 
 
@@ -298,6 +304,12 @@ And a second genomics example: https://ucsdlib.github.io/workshops/ggplot.html
 https://www.tutorialspoint.com/r/r_lists.htm
 
 https://www.datamentor.io/r-programming/list/
+
+
+### More about pipes: %>%
+
+https://www.datacamp.com/community/tutorials/pipe-r-tutorial
+
 
 ### Troubleshooting
 
