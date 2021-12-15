@@ -25,9 +25,9 @@ This course is inspired by several very useful and highly recommended blog posts
 
 - Know how to tidy data 
 
-- Know what the five main verbs are in dplyr (Select, Filter, Arrange, Mutate, Summarise)
+- Know how to combine data frames using dplyr
 
-- Know how to use the five dplyr verbs to manipulate your data
+- Know how to use the five dplyr verbs (Select, Filter, Arrange, Mutate, Summarise) to manipulate your data
 
 - Know how to draw a basic plot using ggplot2
 
@@ -55,7 +55,7 @@ library(tidyverse)
 ```
 
 
-##### Background: gene expression in starvation
+##### Data Background: gene expression in starvation
 
 (Information from here: http://varianceexplained.org/r/tidy-genomics/)
 
