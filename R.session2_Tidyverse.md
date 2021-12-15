@@ -25,17 +25,17 @@ This course is inspired by several very useful and highly recommended blog posts
 
 - Know how to tidy data 
 
-- Know how to add and remove columns from data
+- Know what the five main verbs are in dplyr (Select, Filter, Arrange, Mutate, Summarise)
 
-- Know how to change column names
+- Know how to use the five dplyr verbs to manipulate your data
 
-- Know how to substitute data or text in columns
-
-- How to combine datasets together
-
-- How to filter data
+- Know how to draw a basic plot using ggplot2
 
 
+
+### Note: 
+
+These notes should serve as starting point for learning about data wrangling and visualisation. Use the links in the "Extra" section below to learn more, and practice on your own datasets. 
 
 
 
@@ -46,8 +46,6 @@ This course is inspired by several very useful and highly recommended blog posts
 Tidyverse is a suite of R packages for wrangling and visualising data. They all use the same design philosophy, grammer and data structure. 
 
 Today we'll be using *dplyr* and *ggplot2*, but you can find out more about the other packages here: https://www.tidyverse.org/packages/
-
-
 
 
 ```
