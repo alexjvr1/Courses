@@ -23,7 +23,11 @@ This course is inspired by several very useful and highly recommended blog posts
 
 ### Objectives:
 
-- Know how to tidy data 
+- Recognise un-tidy data
+
+- create tidy data
+
+- Combine data frames
 
 - Know what the five main verbs are in dplyr (Select, Filter, Arrange, Mutate, Summarise)
 
@@ -55,27 +59,27 @@ library(tidyverse)
 ```
 
 
-##### Background: gene expression in starvation
+##### Background: Genome-wide genetic diversity in butterfly species
 
-(Information from here: http://varianceexplained.org/r/tidy-genomics/)
+Climate change and habitat destruction has resulted in sudden and extreme population size reductions in many insects (and other species). However, some species seem to be benefiting from climate change, with rapid range expansions and increased population sizes. 
 
-Through the process of gene regulation, a cell can control which genes are transcribed from DNA to RNA- what we call being “expressed”. (If a gene is never turned into RNA, it may as well not be there at all). This provides a sort of “cellular switchboard” that can activate some systems and deactivate others, which can speed up or slow down growth, switch what nutrients are transported into or out of the cell, and respond to other stimuli. A gene expression microarray lets us measure how much of each gene is expressed in a particular condition. We can use this to figure out the function of a specific gene (based on when it turns on and off), or to get an overall picture of the cell’s activity.
-
-Brauer 2008 used microarrays to test the effect of starvation and growth rate on baker’s yeast (*S. cerevisiae*, a popular model organism for studying molecular genomics because of its simplicity). Basically, if you give yeast plenty of nutrients (a rich media), except that you sharply restrict its supply of one nutrient, you can control the growth rate to whatever level you desire (we do this with a tool called a chemostat). For example, you could limit the yeast’s supply of glucose (sugar, which the cell metabolizes to get energy and carbon), of leucine (an essential amino acid), or of ammonium (a source of nitrogen).
-
-"Starving" the yeast of these nutrients lets us find genes that:
-
-- Raise or lower their activity in response to growth rate. 
-
-- Growth-rate dependent expression patterns can tell us a lot about cell cycle control, and how the cell responds to stress.
-
-- Respond differently when different nutrients are being limited. These genes may be involved in the transport or metabolism of those nutrients.
+We test if genetic diversity has changed in a buttefly species that has expanded its range in the UK since the 1980s. We generated whole genome sequence data for museum samples collected ~1900 (POP1), and modern samples from the same site (POP2), and the expanding range edge of the species (POP3). We estimated genetic diversity, and allele frequencies in 1Mb windows across the genome for each individual. 
 
 
-We'll import the data submitted by the authors, and see what we need to do to get the data in a tidy format. 
+We'll import the data, and see what we need to do to get the data in a tidy format. 
 ```
-#import data
-original_data <- read_delim("http://varianceexplained.org/files/Brauer2008_DataSet1.tds", delim = "\t")
+#import data. 
+
+#Usually we'd do this - Read files in to a list: 
+files <- list.files(pattern="GENE0001.txt") 
+myfiles <- lapply(files, read.table, header=T)
+
+##But, we want three separate files so that we can learn how to combine them using dplyr: 
+
+pop1 <- read.table("POP1.GENE0001.txt", header=T)
+pop2 <- read.table("POP2.GENE0001.txt", header=T)
+pop3 <- read.table("POP3.GENE0001.txt", header=T)
+
 
 #What do the data look like? 
 dim(original_data)
@@ -330,6 +334,12 @@ A nicely written example using genomic data: https://genviz.org/module-02-r/0002
 
 And a second genomics example: https://ucsdlib.github.io/workshops/ggplot.html
 
+
+### More about lists
+
+https://www.tutorialspoint.com/r/r_lists.htm
+
+https://www.datamentor.io/r-programming/list/
 
 ### Troubleshooting
 
