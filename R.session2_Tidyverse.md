@@ -7,6 +7,8 @@ This course is inspired by posts by David Robinson: http://varianceexplained.org
 
 and the DataCamp Introduction to TidyVerse course: https://campus.datacamp.com/courses/introduction-to-the-tidyverse
 
+Useful Cheatsheets: https://www.rstudio.com/resources/cheatsheets/
+
 
 
 ## Part 1: Data wrangling
