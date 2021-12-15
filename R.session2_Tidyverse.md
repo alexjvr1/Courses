@@ -108,16 +108,22 @@ Some good tutorials:
 
 ### Troubleshooting
 
+#### Common errors
 
-Some common syntax errors in R
+The most common errors you'll run in to will be either 1) setting your path correctly, or 2) syntax errors in R. 
 
-
-How and where to find help with errors
-
-
-
-### 
+Have a look at this post for some common error messages and solutions: https://github.com/noamross/zero-dependency-problems/issues/7
 
 
+#### Finding help
+
+Forums like StackExchange are very helpful when troubleshooting errors. The trick is to learn how to phrase your search to find the correct answers. The more specific your search, the more likely you are to find helpful answers. 
+
+
+### Commenting on your code and keeping notes
+
+Remember to add comments to all your code as you go. Delete code that didn't work, and/or make a note of things that you might have done wrong and how to correct it. It could also be useful to add in links to the solution (e.g. a helpful StackExchange post you found).
+
+Keeping a digital lab book (e.g. on GitHub) is good practice and helpful for storing your projects and code. 
 
 
