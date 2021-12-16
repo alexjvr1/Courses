@@ -3,6 +3,9 @@
 Data will never be collected or arrive in exactly the right format to be analysed or visualised. The goal is to get data into a tidy format so that they can be easily used as input for analyses or plots. 
 
 
+This course is available on GitHub: https://github.com/alexjvr1/Courses/blob/main/R.Session2_Tidyverse_GENE0001.md
+
+
 ### Objectives:
 
 - Recognise un-tidy data 
