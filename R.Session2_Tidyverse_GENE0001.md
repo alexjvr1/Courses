@@ -13,7 +13,7 @@ Data will never be collected or arrive in exactly the right format to be analyse
 
 - Know how to rearrange a data frame from wide to long format (gather and spread functions) 
 
-- (Select, Filter, Arrange, Mutate, Summarise)
+- Know how to use dplyr to Select, Filter, Arrange, Mutate, and Summarise your data. 
 
 - Know how to draw a basic plot using ggplot2
 
@@ -336,8 +336,13 @@ summarise(group_by(lep_cleaned,Pop), mean(depth))
 
 ```
 
+Question: What is the mean theta between populations?
+
+
+
 
 ## Part 2: Data Visualisation
+
 
 
 ### Objectives: 
@@ -355,6 +360,7 @@ summarise(group_by(lep_cleaned,Pop), mean(depth))
 
 
 #### Basic plot: 
+
 
 
 
