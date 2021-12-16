@@ -344,7 +344,6 @@ Question: What is the mean theta between populations?
 ## Part 2: Data Visualisation
 
 
-
 ### Objectives: 
 
 - Know the different options needed to generate a plot with ggplot 
@@ -359,12 +358,78 @@ Question: What is the mean theta between populations?
 
 
 
-#### Basic plot: 
+#### Your first plot: 
+
+The basic syntax for ggplot is: 
+```
+ggplot(dataset, aes(x=column_on_x_axis, y=column_on_y_axis))+ geom_typeofplot()
+```
+
+e.g. If we want to see how nucleotide frequencies change across the chromosome, we can use our nuc_lep dataset we created earlier: 
+
+```
+head(nuc_lep)
+
+```
+
+Let's plot the nucleotide frequencies across the chromosome using the midpoint of each window: 
+```
+ggplot(nuc_lep, aes(x=midpos, y=Frequency))+geom_point()
+
+```
+
+geom_point() is one type of graph, and as the name implies prints a point for every data point. 
+
+What other types of graphs are there? Have a look here at some options: https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf
+
+
+This plot gives us some information, but we don't know which nucleotides are where are the graph. But we can colour by Nucleotide to make that more visible: 
+
+```
+
+ggplot(nuc_lep, aes(x=midpos, y=Frequency, colour=Nucleotide))+geom_point()
+```
+
+
+Great, that looks better. But, we also have three populations in the data, so these are plotting on top of each other. Let's create a separate plot for each population: 
+```
+ggplot(nuc_lep, aes(x=midpos, y=Frequency, colour=Nucleotide))+geom_point()+facet_wrap(~Pop)
+
+```
+
+Are the populations different? 
+
+
+Exercise: 
+Plot theta_MLE (our estimate of genetic diversity) along the chromosome, coloured differently for each population (Pop), with a separate plot for each chromosome (Chr). 
+
+Hint: use the lep_cleaned dataset. 
 
 
 
 
+Answer: 
+```
+ggplot(lep_cleaned, aes(x=midpos, y=theta_MLE, colour=Pop))+geom_point()+facet_wrap(~Chr)
 
+```
+
+
+Bonus: How to write your plots to pdf
+
+To create a pdf, simply type: 
+```
+pdf("name_of_pdf.pdf")
+
+ggplot...
+
+dev.off()
+```
+Where name_of_pdf.pdf is the name you want to give your printed pdf. 
+
+ggplot... is your command to create your graph. 
+
+and dev.off() tells the pdf() function that you're done and it can write the pdf. 
 
 
 
