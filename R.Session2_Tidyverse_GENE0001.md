@@ -366,7 +366,23 @@ Question: What is the mean theta between populations?
 The basic syntax for ggplot is: 
 ```
 ggplot(dataset, aes(x=column_on_x_axis, y=column_on_y_axis))+ geom_typeofplot()
+
 ```
+
+If we call the ggplot function by itself, nothing happens: 
+```
+ggplot()
+
+```
+
+We need to tell ggplot what data to use, and which variables to use within the dataset: 
+```
+ggplot(nuc_lep, aes(x=midpos, y=Frequency))
+
+```
+
+Now ggplot knows what to plot, but this still produces nothing. We need to tell ggplot how to display the data the section called geom_typeofplot() above. 
+
 
 e.g. If we want to see how nucleotide frequencies change across the chromosome, we can use our nuc_lep dataset we created earlier: 
 
