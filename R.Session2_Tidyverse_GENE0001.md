@@ -202,15 +202,41 @@ head(nuc_lep)
 ```
 
 
-#### 4. Add or remove columns
+#### 4. Select or remove specific columns
+
+
+select() lets you choose specific columns. 
+
+This is very useful for subseting your data, or for removing columns. For example, now that we have extracted the nucleotide frequency information from our dataset, we don't need these columns in our dataset anymore. Let's remove them: 
+
+
+```
+lep_cleaned2 <- lep_cleaned %>% select(-pi.A., -pi.G., -pi.T., -pi.C.)
+head(lep_cleaned2)
+
+```
+
+But select is even more useful when we use helper functions like starts_with(), ends_with(), and contains(). 
+
+For example, let's find all the nucleotide frequency columns: 
+```
+head(lep_cleaned %>% select(contains("pi")))
+
+```
+
+Or only the Chr and midpos columns
+```
+head(lep_cleaned %>% select(Chr, midpos)
+
+```
+
+These are quite versatile tools for subsetting the data by column. 
 
 
 
 
 
-
-
-#### 4. Change column names
+#### 5. Change column names
 
 Let's look at the column names again: 
 ```
@@ -227,7 +253,7 @@ The column names are not very informative at the moment. To change one column na
 
 
 
-#### 7. Filter data
+#### 6. Filter data
 
 
 
