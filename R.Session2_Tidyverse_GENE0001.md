@@ -313,8 +313,28 @@ head(mutate(lep_cleaned, midpos=start+(stop-start)/2))
 
 #### 7. summarise data
 
+summarise() calculates summary statistics per column. 
+
+e.g. we can calculate the mean sequencing depth like this: 
+```
+summarise(lep_cleaned, mean(depth))
+```
 
 
+But we've just seen that at least one of the populations (MUS) has an extremely low sequencing depth. So we really need to see the depth per population. 
+
+We can use the group_by() function to group data together within summarise to look at any particular subset of the data. e.g.
+```
+summarise(group_by(lep_cleaned,Pop), mean(depth))
+
+# A tibble: 3 × 2
+  Pop   `mean(depth)`
+  <fct>         <dbl>
+1 MUS            1.07
+2 MODC           4.53
+3 MODE           4.60
+
+```
 
 
 ## Part 2: Data Visualisation
