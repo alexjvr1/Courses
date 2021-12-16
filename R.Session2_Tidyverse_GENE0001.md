@@ -122,6 +122,7 @@ The data is not in tidy format. Can you name one thing we need to change?
 
 
 
+
 #### 2. Tidy the data
 
 
@@ -169,14 +170,33 @@ head(lep_cleaned)
 These data are now in a tidy format. 
 
 
-##### *Extra:* 
+#### *Extra:* 
 
-Our data had a single issue violating tidy data format. In genomic data we quite often find data reported per gene or per genomic location rather than per sample. In this case we need to reformat the data so that each line corresponds to an individual. How do we do that? 
+Our data are violating another tidy rule: Our dataframe reports nucleotide frequencies separately for all four nucleotides. What if we wanted a single column with all the nucleotide frequencies? 
 
+Hint: see the gather() and spread() functions in tidyr
 
+A possible solution: 
+```
+nuc_lep <- gather(lep, key="Nucleotide", "Frequency", pi.A., pi.C., pi.G., pi.T.)
 
+head(nuc_lep)
+```
 
+And if we want to separate them again: 
+```
+head(spread(nuc_lep, Nucleotide, Frequency))
 
+#Spread writes each unique Nucleotide:Frequency combination to a separate row.
+```
+
+#### *Bonus:* 
+
+What if we want to rename the nucleotides in our "Nucleotide" column to remove the pi. part of the name?
+
+```
+nuc_lep$Nucleotide <- gsub("\." "" nuc_lep$Nucleotide)
+```
 
 
 #### 3. Add or remove columns
