@@ -267,9 +267,9 @@ The column names are not very informative at the moment. To change one column na
 
 
 
-#### Additional information
+#### Basic plot: 
 
-Read more: https://ggplot2.tidyverse.org
+
 
 
 
@@ -304,6 +304,8 @@ Another great post from Data Carpentry: https://datacarpentry.org/semester-biolo
 A nicely written example using genomic data: https://genviz.org/module-02-r/0002/03/01/introToggplot2/ 
 
 And a second genomics example: https://ucsdlib.github.io/workshops/ggplot.html
+
+Tidyverse: https://ggplot2.tidyverse.org
 
 
 ### More about lists
