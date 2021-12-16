@@ -11,9 +11,9 @@ Data will never be collected or arrive in exactly the right format to be analyse
 
 - Combine data frames
 
-- Know what the five main verbs are in dplyr (Select, Filter, Arrange, Mutate, Summarise)
+- Know how to rearrange a data frame from wide to long format (gather and spread functions) 
 
-- Know how to use the five dplyr verbs to manipulate your data
+- (Select, Filter, Arrange, Mutate, Summarise)
 
 - Know how to draw a basic plot using ggplot2
 
@@ -123,10 +123,10 @@ The data is not in tidy format. Can you name one thing we need to change?
 
 
 
-#### 2. Tidy the data
+#### 2. Separate columns
 
 
-##### Issue: Multiple variables are stored in a single column. 
+ISSUE: Multiple variables are stored in a single column. 
 
 
 ```
@@ -167,10 +167,10 @@ head(lep_cleaned)
 
 ```
 
-These data are now in a tidy format. 
 
 
-#### *Extra:* 
+
+#### 3. Change data from wide to long format
 
 Our data are violating another tidy rule: Our dataframe reports nucleotide frequencies separately for all four nucleotides. What if we wanted a single column with all the nucleotide frequencies? 
 
@@ -196,10 +196,13 @@ What if we want to rename the nucleotides in our "Nucleotide" column to remove t
 
 ```
 nuc_lep$Nucleotide <- gsub("\." "" nuc_lep$Nucleotide)
+nuc_lep$Nucleotide <- gsub("pi" "" nuc_lep$Nucleotide)
+
+head(nuc_lep)
 ```
 
 
-#### 3. Add or remove columns
+#### 4. Add or remove columns
 
 
 
@@ -224,18 +227,6 @@ The column names are not very informative at the moment. To change one column na
 
 
 
-#### 5. Substitute text in a column
-
-
-
-
-
-#### 6. Combine datasets with dplyr
-
-
-
-
-
 #### 7. Filter data
 
 
@@ -248,9 +239,6 @@ The column names are not very informative at the moment. To change one column na
 
 
 ## Part 2: Data Visualisation
-
-
-
 
 
 ### Objectives: 
