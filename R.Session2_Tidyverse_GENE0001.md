@@ -211,9 +211,13 @@ This is very useful for subseting your data, or for removing columns. For exampl
 
 
 ```
+#Using a pipe
 lep_cleaned2 <- lep_cleaned %>% select(-pi.A., -pi.G., -pi.T., -pi.C.)
 head(lep_cleaned2)
 
+#Or without a pipe
+lep_cleaned2 <- select(lep_cleaned, -pi.A., -pi.G., -pi.T., -pi.C.)
+head(lep_cleaned2)
 ```
 
 But select is even more useful when we use helper functions like starts_with(), ends_with(), and contains(). 
@@ -222,11 +226,16 @@ For example, let's find all the nucleotide frequency columns:
 ```
 head(lep_cleaned %>% select(contains("pi")))
 
+#OR
+head(select(lep_cleaned, contains("pi")))
 ```
 
 Or only the Chr and midpos columns
 ```
-head(lep_cleaned %>% select(Chr, midpos)
+head(lep_cleaned %>% select(Chr, midpos))
+
+#OR
+head(select(lep_cleaned, Chr, midpos))
 
 ```
 
@@ -236,26 +245,69 @@ These are quite versatile tools for subsetting the data by column.
 
 
 
-#### 5. Change column names
+#### 5. Subset or select by row
 
-Let's look at the column names again: 
-```
-colnames(original_data)
+filter() allows you to select data by row. You can use any valid arguments regarding row values or content. 
 
-```
-
-The column names are not very informative at the moment. To change one column name: 
-```
-
-
+e.g. Let's choose only rows from one of the populations: 
 
 ```
+unique(lep_cleaned$Pop)
+lep_cleaned %>% filter(Pop=="MODC")
+```
+
+Or we might be interested in data that have been sequenced at > 2X: 
+```
+summary(lep_cleaned$depth)
+
+summary(lep_cleaned %>% filter(depth>2))
+
+```
+
+Or we can filter using multiple variables: 
+
+e.g. let's find all the museum (MUS) samples that have >2X coverage
+```
+lep_cleaned %>% filter(Pop=="MUS" && depth>2)
+
+```
+
+No data! So now we start to know something about our dataset... 
 
 
 
-#### 6. Filter data
+#### 6. Add new columns with mutate()
 
+mutate() allows you to add columns to your data based on data already available to you. 
 
+e.g. We have the start and end bp position of each genomic window. How would we calculate the midpoint of the window and add this as a new column. (Hint, this has already been done and the column is called "midpos)"
+
+```
+head(mutate(lep_cleaned, midpos=start+(stop-start)/2))
+
+```
+
+Oh no! We've run into an error: 
+```
+Error: Problem with `mutate()` column `midpos.new`.
+ℹ `midpos.new = start - stop`.
+✖ non-numeric argument to binary operator
+```
+
+This suggests that R is interpreting the numbers as characters: 
+```
+str(lep_cleaned)
+
+```
+
+We can easily fix this: 
+```
+lep_cleaned$stop <- as.numeric(lep_cleaned$stop)
+lep_cleaned$start <- as.numeric(lep_cleaned$start)
+
+#And recalculate the midpos
+head(mutate(lep_cleaned, midpos=start+(stop-start)/2))
+```
 
 
 
